@@ -1,29 +1,40 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Holidayzer {
-  private List<Holiday> holidays = new ArrayList<>();
 
-  public Holidayzer (Holiday[] holidays) {
-    Collections.addAll(this.holidays, holidays);
+  Map<String , String> feriados = new HashMap<>();
+  public Holidayzer(){
+    montaFeriado();
   }
 
-  public void checkDate(String date) {
-    for(int i = 0; i < holidays.size(); i++) {
-      if (Objects.equals(holidays.get(i).getDate(), date)) {
-        System.out.println(holidays.get(i).getDescription());
-        return;
-      }
+
+  public void ehFeriado(String feriado){
+    String pegaFeriado = feriados.get(feriado);
+    if(pegaFeriado== null){
+      System.out.println("Este feriado nao existe");
+      return;
+
     }
-
-    System.out.println("Não existe feriado nessa data");
+    System.out.println("A data "+ feriado + " corresponde ao feriado de "+ pegaFeriado);
+  }
+  public void listaFeriado(){
+    feriados.forEach((key , value)-> System.out.println("data: "+ key +" "+ value));
   }
 
-  public void getAllHolidays() {
-    for(int i = 0; i < holidays.size(); i++) {
-      System.out.println(this.holidays.get(i).getDate() + " - " + this.holidays.get(i).getDescription());
-    }
+  public void montaFeriado(){
+    feriados.put("01/01/2023","Confraternização mundial");
+    feriados.put("21/02/2023", "Carnaval");
+    feriados.put("17/04/2023","Páscoa");
+    feriados.put("21/04/2023","Tiradentes");
+    feriados.put("01/05/2023","Dia do trabalho");
+    feriados.put("08/06/2023","Corpus Christi");
+    feriados.put("07/09/2023","Independência do Brasil");
+    feriados.put("12/10/2023" ,"Nossa Senhora Aparecida");
+ 
+    
+
+    
   }
+ 
 }
